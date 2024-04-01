@@ -15,5 +15,6 @@ struct FaceFactsApp: App {
             ContentView()
         }
         .modelContainer(for: Person.self)
+        
     }
 }
