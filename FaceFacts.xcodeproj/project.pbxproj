@@ -18,6 +18,7 @@
 		F3A255992BBA3BB1001D1359 /* EditPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A255982BBA3BB1001D1359 /* EditPersonView.swift */; };
 		F3A2559B2BBA4D3D001D1359 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2559A2BBA4D3D001D1359 /* PeopleView.swift */; };
 		F3A2559D2BBA5506001D1359 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2559C2BBA5506001D1359 /* Event.swift */; };
+		F3A2559F2BBA5809001D1359 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2559E2BBA5809001D1359 /* EditEventView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		F3A255982BBA3BB1001D1359 /* EditPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonView.swift; sourceTree = "<group>"; };
 		F3A2559A2BBA4D3D001D1359 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		F3A2559C2BBA5506001D1359 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		F3A2559E2BBA5809001D1359 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				F3A2556C2BBA2FB1001D1359 /* FaceFactsApp.swift */,
 				F3A2556E2BBA2FB1001D1359 /* ContentView.swift */,
+				F3A2559E2BBA5809001D1359 /* EditEventView.swift */,
 				F3A2559A2BBA4D3D001D1359 /* PeopleView.swift */,
 				F3A255982BBA3BB1001D1359 /* EditPersonView.swift */,
 				F3A255962BBA38AA001D1359 /* Person.swift */,
@@ -275,6 +278,7 @@
 				F3A2556D2BBA2FB1001D1359 /* FaceFactsApp.swift in Sources */,
 				F3A2559D2BBA5506001D1359 /* Event.swift in Sources */,
 				F3A255992BBA3BB1001D1359 /* EditPersonView.swift in Sources */,
+				F3A2559F2BBA5809001D1359 /* EditEventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
