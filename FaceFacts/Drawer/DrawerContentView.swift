@@ -23,7 +23,6 @@ struct DrawerContentView: View {
     var body: some View {
         ZStack {
             NavigationStack {
-//                drawerTopView()
                 Form {
                     Section {
                         if let imageData = person.photo, let uiImage = UIImage(data: imageData) {
@@ -63,9 +62,19 @@ struct DrawerContentView: View {
                     }
                 }
                 .toolbar {
-                    Button("Cancel", action: {
-                        currentDrawer.toggle()
-                    })
+                    
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Cancel", action: {
+                            currentDrawer.toggle()
+                        })
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Save", action: {
+                            addPerson()
+                            currentDrawer.toggle()
+                        })
+                    }
+                    
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationTitle("New Contact")
@@ -73,22 +82,6 @@ struct DrawerContentView: View {
         }
 
     }
-    
-//    func drawerTopView() -> some View {
-//        VStack {
-//            HStack {
-//                Button("Cancel", action: {
-//                    currentDrawer.toggle()
-//                })
-//                .frame(width: 34, height: 34)
-//                Spacer()
-//            }
-//        }
-//        .frame(maxWidth: .infinity)
-//        .padding(.leading, 10)
-////        .padding(.top, 40)
-////        .padding(.bottom, 30)
-//    }
     
     func addEvent() {
         let event = Event(name: "", location: "")

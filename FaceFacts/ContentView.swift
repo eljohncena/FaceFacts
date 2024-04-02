@@ -47,13 +47,6 @@ struct ContentView: View {
             DrawerView(isDrawerVisible: $isDrawerOpen)
         }
     }
-    
-    
-//    func isDrawerPresented() {
-//        isDrawerOpen.toggle()
-//        DrawerView(isDrawerVisible: $isDrawerOpen)
-//    }
-        
 }
 
 #Preview {
