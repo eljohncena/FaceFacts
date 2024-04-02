@@ -20,6 +20,9 @@
 		F3A2559D2BBA5506001D1359 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2559C2BBA5506001D1359 /* Event.swift */; };
 		F3A2559F2BBA5809001D1359 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2559E2BBA5809001D1359 /* EditEventView.swift */; };
 		F3A255A12BBA6225001D1359 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A255A02BBA6225001D1359 /* Preview.swift */; };
+		F3A255AB2BBB6993001D1359 /* NewPersonPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A255AA2BBB6993001D1359 /* NewPersonPreview.swift */; };
+		F3F90C962BBB6C320089CB2F /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F90C952BBB6C320089CB2F /* DrawerView.swift */; };
+		F3F90C982BBB6C540089CB2F /* DrawerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F90C972BBB6C540089CB2F /* DrawerContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,11 @@
 		F3A2559C2BBA5506001D1359 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F3A2559E2BBA5809001D1359 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		F3A255A02BBA6225001D1359 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		F3A255A22BBA6A4D001D1359 /* FaceFacts.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FaceFacts.entitlements; sourceTree = "<group>"; };
+		F3A255A32BBA6ABB001D1359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F3A255AA2BBB6993001D1359 /* NewPersonPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPersonPreview.swift; sourceTree = "<group>"; };
+		F3F90C952BBB6C320089CB2F /* DrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
+		F3F90C972BBB6C540089CB2F /* DrawerContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +114,11 @@
 		F3A2556B2BBA2FB1001D1359 /* FaceFacts */ = {
 			isa = PBXGroup;
 			children = (
+				F3A255A32BBA6ABB001D1359 /* Info.plist */,
+				F3A255A22BBA6A4D001D1359 /* FaceFacts.entitlements */,
 				F3A2556C2BBA2FB1001D1359 /* FaceFactsApp.swift */,
 				F3A2556E2BBA2FB1001D1359 /* ContentView.swift */,
+				F3A255AC2BBB6B42001D1359 /* Drawer */,
 				F3A2559E2BBA5809001D1359 /* EditEventView.swift */,
 				F3A2559A2BBA4D3D001D1359 /* PeopleView.swift */,
 				F3A255982BBA3BB1001D1359 /* EditPersonView.swift */,
@@ -143,6 +154,16 @@
 				F3A255892BBA2FB2001D1359 /* FaceFactsUITestsLaunchTests.swift */,
 			);
 			path = FaceFactsUITests;
+			sourceTree = "<group>";
+		};
+		F3A255AC2BBB6B42001D1359 /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				F3F90C952BBB6C320089CB2F /* DrawerView.swift */,
+				F3F90C972BBB6C540089CB2F /* DrawerContentView.swift */,
+				F3A255AA2BBB6993001D1359 /* NewPersonPreview.swift */,
+			);
+			path = Drawer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,11 +299,14 @@
 				F3A255972BBA38AA001D1359 /* Person.swift in Sources */,
 				F3A2559B2BBA4D3D001D1359 /* PeopleView.swift in Sources */,
 				F3A255A12BBA6225001D1359 /* Preview.swift in Sources */,
+				F3F90C962BBB6C320089CB2F /* DrawerView.swift in Sources */,
 				F3A2556F2BBA2FB1001D1359 /* ContentView.swift in Sources */,
 				F3A2556D2BBA2FB1001D1359 /* FaceFactsApp.swift in Sources */,
 				F3A2559D2BBA5506001D1359 /* Event.swift in Sources */,
 				F3A255992BBA3BB1001D1359 /* EditPersonView.swift in Sources */,
+				F3F90C982BBB6C540089CB2F /* DrawerContentView.swift in Sources */,
 				F3A2559F2BBA5809001D1359 /* EditEventView.swift in Sources */,
+				F3A255AB2BBB6993001D1359 /* NewPersonPreview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,11 +467,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FaceFacts/FaceFacts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FaceFacts/Preview Content\"";
+				DEVELOPMENT_TEAM = 56E3PH5VD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FaceFacts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -471,11 +498,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FaceFacts/FaceFacts.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FaceFacts/Preview Content\"";
+				DEVELOPMENT_TEAM = 56E3PH5VD6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FaceFacts/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

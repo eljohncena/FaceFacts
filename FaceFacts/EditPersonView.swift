@@ -21,6 +21,7 @@ struct EditPersonView: View {
     ) var events: [Event]
     
     var body: some View {
+        
         Form {
             Section {
                 
@@ -66,8 +67,13 @@ struct EditPersonView: View {
                 EditEventView(event: event)
         }
         .onChange(of: selectedItem, loadPhoto)
+ 
     }
     
+    
+    func addPerson() {
+        modelContext.insert(person)
+    }
     func addEvent() {
         let event = Event(name: "", location: "")
         modelContext.insert(event)
@@ -83,7 +89,7 @@ struct EditPersonView: View {
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try Previewer(isDrawerOpen: false)
         
         return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
             .modelContainer(previewer.container)

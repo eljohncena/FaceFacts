@@ -21,7 +21,7 @@ struct EditEventView: View {
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try Previewer(isDrawerOpen: true)
         
         return EditEventView(event: previewer.event)
             .modelContainer(previewer.container)

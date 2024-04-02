@@ -45,7 +45,7 @@ struct PeopleView: View {
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try Previewer(isDrawerOpen: false)
         
         return PeopleView()
             .modelContainer(previewer.container)
