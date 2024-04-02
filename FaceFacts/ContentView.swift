@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var path = NavigationPath()
     @State private var sortOrder = [SortDescriptor(\Person.name)]
     @State private var searchText = ""
-    @State var isDrawerOpen = 
+    @State private var isDrawerOpen: Bool = false
     
     
     var body: some View {
@@ -35,20 +35,24 @@ struct ContentView: View {
                                         Text("Name (Z-A")
                                             .tag([SortDescriptor(\Person.name, order: .reverse)])
                                     }
-                                    Button("Add Person", systemImage: "plus", action: isDrawerPresented.toggle())
                                 }
+                                Button("Add Person", systemImage: "plus", action:{isDrawerOpen.toggle()} )
                             }
                         }
                     .searchable(text: $searchText)
                 }
             }
         }
+        .sheet(isPresented: $isDrawerOpen) {
+            DrawerView(isDrawerVisible: $isDrawerOpen)
+        }
     }
     
     
-    func isDrawerPresented() {
-        isDrawerOpen =  false
-    }
+//    func isDrawerPresented() {
+//        isDrawerOpen.toggle()
+//        DrawerView(isDrawerVisible: $isDrawerOpen)
+//    }
         
 }
 
@@ -56,7 +60,7 @@ struct ContentView: View {
     do {
         let previewer = try Previewer(isDrawerOpen: false)
         
-        return ContentView(isDrawerOpen: false)
+        return ContentView()
             .modelContainer(previewer.container)
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")

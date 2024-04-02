@@ -15,13 +15,13 @@ struct DrawerView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             DrawerContentView(person: Person(name: "", emailAddress: "", details: ""), currentDrawer: $isDrawerVisible)
-                .frame(height: self.height)
-                .offset(x: self.isDrawerVisible ? 0 : self.height, y: 10)
-                .transition(.move(edge: .bottom))
-            Spacer()
+//                .frame(height: self.height)
+//                .offset(x: self.isDrawerVisible ? 0 : self.height, y: 10)
+//                .transition(.move(edge: .bottom))
+//            Spacer()
             
         }
-        .animation(.easeInOut, value: isDrawerVisible)
+//        .animation(.easeInOut, value: isDrawerVisible)
     }
 }
 

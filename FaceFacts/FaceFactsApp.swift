@@ -12,7 +12,7 @@ import SwiftUI
 struct FaceFactsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(isDrawerOpen: .constant(false))
+            ContentView()
         }
         .modelContainer(for: Person.self)
         
