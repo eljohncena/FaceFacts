@@ -54,7 +54,7 @@ struct DrawerContentView: View {
                                     
                                     ForEach(events) { event in
                                         Text(event.name)
-                                            .tag(Optional(event))
+                                            .tag(Optional(event) ?? newEvent)
                                     }
                                 }
                             }
@@ -94,12 +94,13 @@ struct DrawerContentView: View {
     }
     
     func addPerson() {
-        if newEventField {
-            person.metAt?.name = newEvent.name
-            person.metAt?.location = newEvent.location
-            
-        }
         modelContext.insert(person)
+        
+        if newEventField {
+            let event = Event(name: self.newEvent.name, location: self.newEvent.location)
+            person.metAt = event
+            modelContext.insert(event)
+        }
     }
     
 }

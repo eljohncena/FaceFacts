@@ -12,10 +12,10 @@ import SwiftUI
 struct EditPersonView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var person: Person
+    @Bindable var newEvent: Event = Event(name: "", location: "")
     @Binding var navigationPath: NavigationPath
     @State private var selectedItem: PhotosPickerItem?
     @State private var newEventField: Bool = false
-    @State private var newEvent: Event = Event(name: "", location: "")
     @State private var edit: Bool = false
     
     @Query(sort: [
@@ -55,7 +55,7 @@ struct EditPersonView: View {
                             
                             ForEach(events) { event in
                                 Text(event.name)
-                                    .tag(Optional(event))
+                                    .tag(Optional(event) ?? newEvent)
                             }
                         }
                     }
@@ -102,19 +102,20 @@ struct EditPersonView: View {
         .navigationBarBackButtonHidden(edit)
         .onChange(of: selectedItem, loadPhoto)
             
-        }
+    }
     
     func cancelEdit() {
         
     }
         
     func addPerson() {
-        if newEventField {
-            person.metAt?.name = newEvent.name
-            person.metAt?.location = newEvent.location
-            
-        }
         modelContext.insert(person)
+        
+        if newEventField {
+            let event = Event(name: self.newEvent.name, location: self.newEvent.location)
+            person.metAt = event
+            modelContext.insert(event)
+        }
     }
     
     func loadPhoto(){
@@ -128,7 +129,7 @@ struct EditPersonView: View {
     do {
         let previewer = try Previewer(isDrawerOpen: false)
         
-        return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
+        return EditPersonView(person: previewer.person, newEvent: previewer.event, navigationPath: .constant(NavigationPath()))
             .modelContainer(previewer.container)
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
