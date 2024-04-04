@@ -14,7 +14,7 @@ struct DrawerView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            DrawerContentView(person: Person(name: "", emailAddress: "", details: ""), currentDrawer: $isDrawerVisible)
+            DrawerContentView(person: Person(name: "", emailAddress: "", details: "", metAt: nil ), currentDrawer: $isDrawerVisible)
         }
     }
 }

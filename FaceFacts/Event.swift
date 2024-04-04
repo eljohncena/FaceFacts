@@ -15,7 +15,7 @@ class Event {
     var people: [Person]? = [Person]()
     
     
-    init(name: String, location: String) {
+    init(name: String = "", location: String = "") {
         self.name = name
         self.location = location
     }

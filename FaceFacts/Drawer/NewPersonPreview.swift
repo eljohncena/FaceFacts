@@ -19,7 +19,7 @@ struct NewPersonPreview {
         container = try ModelContainer(for: Person.self, configurations: config)
         
         event = Event(name: "", location: "")
-        person = Person(name: "", emailAddress: "", details: "")
+        person = Person(name: "", emailAddress: "", details: "", metAt: event)
         
         container.mainContext.insert(person)
     }

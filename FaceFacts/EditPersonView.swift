@@ -14,6 +14,9 @@ struct EditPersonView: View {
     @Bindable var person: Person
     @Binding var navigationPath: NavigationPath
     @State private var selectedItem: PhotosPickerItem?
+    @State private var newEventField: Bool = false
+    @State private var newEvent: Event = Event(name: "", location: "")
+    @State private var edit: Bool = false
     
     @Query(sort: [
         SortDescriptor(\Event.name),
@@ -30,7 +33,7 @@ struct EditPersonView: View {
                         .resizable()
                         .scaledToFit()
                 }
-                    
+                
                 PhotosPicker(selection: $selectedItem, matching: .images){
                     Label("Select a photo", systemImage: "person")
                 }
@@ -43,41 +46,75 @@ struct EditPersonView: View {
                     .textInputAutocapitalization(.never)
             }
             Section("Where did you meet them?") {
-                Picker("Met at", selection: $person.metAt) {
-                    Text("Unknown event")
-                        .tag(Optional<Event>.none)
-                    if events.isEmpty == false {
-                        Divider()
-                        
-                        ForEach(events) { event in
-                            Text(event.name)
-                                .tag(Optional(event))
+                if !newEventField{
+                    Picker("Met at", selection: $person.metAt) {
+                        Text("Select event")
+                            .tag(Optional<Event>.none)
+                        if events.isEmpty == false {
+                            Divider()
+                            
+                            ForEach(events) { event in
+                                Text(event.name)
+                                    .tag(Optional(event))
+                            }
                         }
                     }
                 }
-                Button("Add new event", action: addEvent)
+                else {
+                    TextField("Name", text: $newEvent.name)
+                    TextField("Location", text: $newEvent.location)
+                }
+                if edit {
+                    Button("Add new event", action: {
+                        newEventField = true
+                    })
+                }
             }
             Section("Notes") {
                 TextField("Details about this person", text: $person.details, axis: .vertical)
             }
         }
-        .navigationTitle("Edit Person")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(for: Event.self) { event in
-                EditEventView(event: event)
+        .disabled(!edit)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if !edit {
+                    Button("Edit", action: {
+                        edit.toggle()
+                    })
+                } else {
+                    Button("Save", action: {
+                        edit.toggle()
+                        addPerson()
+                    })
+                }
+                
+            }
+            ToolbarItem(placement: .topBarLeading){
+                if edit {
+                    Button("Cancel", action: {
+                        edit.toggle()
+                    })
+                }
+            }
         }
+        .navigationTitle(person.name)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(edit)
         .onChange(of: selectedItem, loadPhoto)
- 
+            
+        }
+    
+    func cancelEdit() {
+        
     }
-    
-    
+        
     func addPerson() {
+        if newEventField {
+            person.metAt?.name = newEvent.name
+            person.metAt?.location = newEvent.location
+            
+        }
         modelContext.insert(person)
-    }
-    func addEvent() {
-        let event = Event(name: "", location: "")
-        modelContext.insert(event)
-        navigationPath.append(event)
     }
     
     func loadPhoto(){

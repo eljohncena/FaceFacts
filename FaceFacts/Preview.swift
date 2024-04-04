@@ -21,7 +21,7 @@ struct Previewer {
         container = try ModelContainer(for: Person.self, configurations: config)
         
         event = Event(name: "Moonshine", location: "Gaslamp")
-        person = Person(name: "John Appleseed", emailAddress: "Johnappleseed@test.com", details: "")
+        person = Person(name: "John Appleseed", emailAddress: "Johnappleseed@test.com", details: "", metAt: event)
         
         self.isDrawerOpen = isDrawerOpen
         container.mainContext.insert(person)

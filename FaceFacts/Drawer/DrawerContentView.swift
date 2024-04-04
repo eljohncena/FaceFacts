@@ -14,6 +14,8 @@ struct DrawerContentView: View {
     @Bindable var person: Person
     @State private var selectedItem: PhotosPickerItem?
     @Binding var currentDrawer: Bool
+    @State private var newEventField: Bool = false
+    @State private var newEvent: Event = Event(name: "", location: "")
     
     @Query(sort: [
         SortDescriptor(\Event.name),
@@ -43,19 +45,27 @@ struct DrawerContentView: View {
                             .textInputAutocapitalization(.never)
                     }
                     Section("Where did you meet them?") {
-                        Picker("Met at", selection: $person.metAt) {
-                            Text("Unknown event")
-                                .tag(Optional<Event>.none)
-                            if events.isEmpty == false {
-                                Divider()
-                                
-                                ForEach(events) { event in
-                                    Text(event.name)
-                                        .tag(Optional(event))
+                        if !newEventField{
+                            Picker("Met at", selection: $person.metAt) {
+                                Text("Select event")
+                                    .tag(Optional<Event>.none)
+                                if events.isEmpty == false {
+                                    Divider()
+                                    
+                                    ForEach(events) { event in
+                                        Text(event.name)
+                                            .tag(Optional(event))
+                                    }
                                 }
                             }
                         }
-                        Button("Add new event", action: addEvent)
+                        else {
+                            TextField("Name", text: $newEvent.name)
+                            TextField("Location", text: $newEvent.location)
+                        }
+                        Button("Add new event", action: {
+                            newEventField = true
+                        })
                     }
                     Section("Notes") {
                         TextField("Details about this person", text: $person.details, axis: .vertical)
@@ -83,13 +93,12 @@ struct DrawerContentView: View {
 
     }
     
-    func addEvent() {
-        let event = Event(name: "", location: "")
-        modelContext.insert(event)
-        
-    }
-    
     func addPerson() {
+        if newEventField {
+            person.metAt?.name = newEvent.name
+            person.metAt?.location = newEvent.location
+            
+        }
         modelContext.insert(person)
     }
     

@@ -30,10 +30,12 @@ struct ContentView: View {
                             .toolbar {
                                 Menu("Sort", systemImage: "arrow.up.arrow.down") {
                                     Picker("Sort", selection: $sortOrder) {
-                                        Text("Name (A-Z")
+                                        Text("Name (A-Z)")
                                             .tag([SortDescriptor(\Person.name)])
-                                        Text("Name (Z-A")
+                                        Text("Name (Z-A)")
                                             .tag([SortDescriptor(\Person.name, order: .reverse)])
+                                        Text("Event")
+                                            .tag([SortDescriptor(\Person.metAt?.name)])
                                     }
                                 }
                                 Button("Add Person", systemImage: "plus", action:{isDrawerOpen.toggle()} )
