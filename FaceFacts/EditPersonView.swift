@@ -49,13 +49,13 @@ struct EditPersonView: View {
                 if !newEventField{
                     Picker("Met at", selection: $person.metAt) {
                         Text("Select event")
-                            .tag(Optional<Event>.none)
+                            .tag(nil as Event?)
                         if events.isEmpty == false {
                             Divider()
                             
                             ForEach(events) { event in
                                 Text(event.name)
-                                    .tag(Optional(event) ?? newEvent)
+                                    .tag(event as Event?)
                             }
                         }
                     }

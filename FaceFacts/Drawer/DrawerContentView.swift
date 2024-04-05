@@ -48,13 +48,13 @@ struct DrawerContentView: View {
                         if !newEventField{
                             Picker("Met at", selection: $person.metAt) {
                                 Text("Select event")
-                                    .tag(Optional<Event>.none)
+                                    .tag(nil as Event?)
                                 if events.isEmpty == false {
                                     Divider()
                                     
                                     ForEach(events) { event in
                                         Text(event.name)
-                                            .tag(Optional(event) ?? newEvent)
+                                            .tag(event as Event?)
                                     }
                                 }
                             }
@@ -97,9 +97,9 @@ struct DrawerContentView: View {
         modelContext.insert(person)
         
         if newEventField {
-            let event = Event(name: self.newEvent.name, location: self.newEvent.location)
-            person.metAt = event
+            let event = Event(name: newEvent.name, location: newEvent.location)
             modelContext.insert(event)
+            person.metAt = event
         }
     }
     
